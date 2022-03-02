@@ -1,36 +1,30 @@
-import csv
-from datetime import date
+
 from datetime import datetime
+from mymoduleforage import age
+import writingdata
+import os
 
 
-def age(birthdate):
-    today = date.today()
-    yearDifference = today.year - birthdate.year
-    noBirthdayThisYear = (today.month, today.day) < (birthdate.month, birthdate.day)
-    
-    if noBirthdayThisYear :
-        return yearDifference -1
-    return yearDifference   
 
-Name = input("pls enter ur name: ")
-Lastname = input("pls enter ur Lastname: ")
+name = input("pls enter ur name: ")
+lastname = input("pls enter ur Lastname: ")
 birthday = input("pls enter ur birthday: ")
+def osusing(name1):
+    os.mkdir(name)
+    os.system("touch "+ name+"/.userdating.txt")
+    os.system("echo " + name + ">>/userdating.txt")
 
-with open('data.csv', 'a') as file:
-    myFile = csv.writer(file)
-    myFile.writerow([Name, Lastname, birthday])
-   
-    birthdate = datetime.strptime(birthday, "%d.%m.%Y")
-    
-    if age(birthdate) > 17:
-        writer.writerow([Name, Lastname, birthday])
-    else:
-        print("You are not over 18.")
+birthdate = datetime.strptime(birthday, "%d.%m.%Y")
 
-print("Thx " +Name)
+if age(birthdate) > 17:
+    writingdata.writecsvfile([name, lastname, birthday])
+else:
+    print("You are not over 18.")
+
+print("Thx " +name)
 
 
-print(age(date(2000, 1, 1)))
+
         
         
     
